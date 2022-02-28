@@ -1,6 +1,23 @@
-public class SinglyLinkedListAssignment {
+public class SinglyLinkedListAssignment<E> {
 
-   /* public static void find(SinglyLinkedList list)
+    public SinglyLinkedList.Node<E> reverse(SinglyLinkedList.Node<E> node)
+    {
+        SinglyLinkedList.Node<E> prev=null;
+        SinglyLinkedList.Node<E> current= node;
+        SinglyLinkedList.Node<E> next=null;
+
+        while (current!=null)
+        {
+            next=current.getNext();
+            current.setNext(prev);
+            prev=current;
+            current=next;
+        }
+        node=prev;
+        return node;
+    }
+
+    /* public static void find(SinglyLinkedList list)
     {
         SinglyLinkedList.Node node=list.getHead();
         while (node!=null)
@@ -45,7 +62,7 @@ public class SinglyLinkedListAssignment {
     {
         SinglyLinkedList.Node node;
         node=list.getHead();
-        while (node.getNext()==null)
+        while (node!=null)
         {
             System.out.print(node.getElement()+", ");
             node=node.getNext();
@@ -56,12 +73,13 @@ public class SinglyLinkedListAssignment {
     public static void main(String[] args) {
         SinglyLinkedList <Integer>list=new SinglyLinkedList();
         SinglyLinkedList <Integer>list2=new SinglyLinkedList();
-        list.addFirst(5);
+        SinglyLinkedListAssignment s=new SinglyLinkedListAssignment();
+        list.addFirst(7);
+        list.addFirst(8);
+        list.addFirst(9);
         list.addFirst(10);
-        list.addFirst(15);
-        list.addFirst(20);
-        list.addFirst(25);
-        list.addFirst(30);
+        list.addFirst(11);
+        list.addFirst(12);
         System.out.println("List 1 before "+list.size());
         list2.addFirst(1);
         list2.addFirst(2);
@@ -72,11 +90,8 @@ public class SinglyLinkedListAssignment {
         System.out.println("List 2 size "+list.size());
         concate(list,list2);
         System.out.println("List 1 after "+list.size());
-        print(list);
-        System.out.println();
-        rotate(list);
-        print(list);
-        System.out.println();
+       s.reverse((list.getHead()));
+
 
 
     }
